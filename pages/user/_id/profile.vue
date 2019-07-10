@@ -35,42 +35,66 @@
 
           <div class="article-preview">
             <div class="article-meta">
-              <a href=""><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
+              <nuxt-link to="/user/1/profile"><img src="http://i.imgur.com/Qr71crq.jpg" /></nuxt-link>
               <div class="info">
-                <a href="" class="author">Eric Simons</a>
+                <nuxt-link to="/user/1/profile" class="author">Eric Simons</nuxt-link>
                 <span class="date">January 20th</span>
               </div>
               <button class="btn btn-outline-primary btn-sm pull-xs-right">
                 <i class="ion-heart"></i> 29
               </button>
             </div>
-            <a href="" class="preview-link">
+            <nuxt-link to="/article/1" class="preview-link">
               <h1>How to build webapps that scale</h1>
-              <p>This is the description for the post.</p>
-              <span>Read more...</span>
-            </a>
-          </div>
-
-          <div class="article-preview">
-            <div class="article-meta">
-              <a href=""><img src="http://i.imgur.com/N4VcUeJ.jpg" /></a>
-              <div class="info">
-                <a href="" class="author">Albert Pai</a>
-                <span class="date">January 20th</span>
-              </div>
-              <button class="btn btn-outline-primary btn-sm pull-xs-right">
-                <i class="ion-heart"></i> 32
-              </button>
-            </div>
-            <a href="" class="preview-link">
-              <h1>The song you won't ever stop singing. No matter how hard you try.</h1>
               <p>This is the description for the post.</p>
               <span>Read more...</span>
               <ul class="tag-list">
                 <li class="tag-default tag-pill tag-outline">Music</li>
                 <li class="tag-default tag-pill tag-outline">Song</li>
               </ul>
-            </a>
+            </nuxt-link>
+          </div>
+          <div class="article-preview">
+            <div class="article-meta">
+              <nuxt-link to="/user/1/profile"><img src="http://i.imgur.com/Qr71crq.jpg" /></nuxt-link>
+              <div class="info">
+                <nuxt-link to="/user/1/profile" class="author">Eric Simons</nuxt-link>
+                <span class="date">January 20th</span>
+              </div>
+              <button class="btn btn-outline-primary btn-sm pull-xs-right">
+                <i class="ion-heart"></i> 29
+              </button>
+            </div>
+            <nuxt-link to="/article/1" class="preview-link">
+              <h1>How to build webapps that scale</h1>
+              <p>This is the description for the post.</p>
+              <span>Read more...</span>
+              <ul class="tag-list">
+                <li class="tag-default tag-pill tag-outline">Music</li>
+                <li class="tag-default tag-pill tag-outline">Song</li>
+              </ul>
+            </nuxt-link>
+          </div>
+          <div class="article-preview">
+            <div class="article-meta">
+              <nuxt-link to="/user/1/profile"><img src="http://i.imgur.com/Qr71crq.jpg" /></nuxt-link>
+              <div class="info">
+                <nuxt-link to="/user/1/profile" class="author">Eric Simons</nuxt-link>
+                <span class="date">January 20th</span>
+              </div>
+              <button class="btn btn-outline-primary btn-sm pull-xs-right">
+                <i class="ion-heart"></i> 29
+              </button>
+            </div>
+            <nuxt-link to="/article/1" class="preview-link">
+              <h1>How to build webapps that scale</h1>
+              <p>This is the description for the post.</p>
+              <span>Read more...</span>
+              <ul class="tag-list">
+                <li class="tag-default tag-pill tag-outline">Music</li>
+                <li class="tag-default tag-pill tag-outline">Song</li>
+              </ul>
+            </nuxt-link>
           </div>
         </div>
       </div>

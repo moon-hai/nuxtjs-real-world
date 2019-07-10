@@ -1,32 +1,21 @@
 <template>
   <nav class="navbar navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="index.html">conduit</a>
+      <nuxt-link to="/" class="navbar-brand">conduit</nuxt-link>
       <ul class="nav navbar-nav pull-xs-right">
         <li class="nav-item">
-          <!-- Add "active" class when you're on that page" -->
-          <a class="nav-link active" href="">Home</a>
+          <nuxt-link to="/" class="nav-link" active-class="active" exact>Home</nuxt-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">
-            <i class="ion-compose"></i>&nbsp;New Post
-          </a>
+          <nuxt-link to="/article/new" class="nav-link" active-class="active"><i class="ion-compose"></i>&nbsp;New Post&nbsp;New Post</nuxt-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">
-            <i class="ion-gear-a"></i>&nbsp;Settings
-          </a>
+          <nuxt-link to="/user/1/setting" class="nav-link" active-class="active"><i class="ion-gear-a"></i>&nbsp;Settings</nuxt-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Sign up</a>
+          <nuxt-link to="/user/signup" class="nav-link" active-class="active">Sign up</nuxt-link>
         </li>
       </ul>
     </div>
   </nav>
 </template>
-
-<script>
-export default {
-  name: 'header'
-}
-</script>
