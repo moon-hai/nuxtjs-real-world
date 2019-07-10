@@ -7,7 +7,7 @@
           <nuxt-link to="/" class="nav-link" active-class="active" exact>Home</nuxt-link>
         </li>
         <li class="nav-item">
-          <nuxt-link to="/article/new" class="nav-link" active-class="active"><i class="ion-compose"></i>&nbsp;New Post&nbsp;New Post</nuxt-link>
+          <nuxt-link to="/article/new" class="nav-link" active-class="active"><i class="ion-compose"></i>&nbsp;New Post</nuxt-link>
         </li>
         <li class="nav-item">
           <nuxt-link to="/user/1/setting" class="nav-link" active-class="active"><i class="ion-gear-a"></i>&nbsp;Settings</nuxt-link>

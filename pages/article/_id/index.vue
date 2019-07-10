@@ -72,35 +72,21 @@
             </div>
           </form>
 
-          <div class="card">
-            <div class="card-block">
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-              <nuxt-link to="/user/1/profile" class="comment-author"><img src="http://i.imgur.com/Qr71crq.jpg" class="comment-author-img" /></nuxt-link>
-              &nbsp;
-              <nuxt-link to="/user/1/profile" class="comment-author">Jacob Schmidt</nuxt-link>
-              <span class="date-posted">Dec 29th</span>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-block">
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-              <nuxt-link to="/user/1/profile" class="comment-author"><img src="http://i.imgur.com/Qr71crq.jpg" class="comment-author-img" /></nuxt-link>
-              &nbsp;
-              <nuxt-link to="/user/1/profile" class="comment-author">Jacob Schmidt</nuxt-link>
-              <span class="date-posted">Dec 29th</span>
-              <span class="mod-options">
-                <i class="ion-edit"></i>
-                <i class="ion-trash-a"></i>
-              </span>
-            </div>
-          </div>
+          <Card />
+          <Card />
+          <Card />
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import Card from '@/components/Card'
+
+export default {
+  components: {
+    Card
+  }
+}
+</script>
