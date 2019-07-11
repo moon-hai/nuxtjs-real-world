@@ -39,7 +39,7 @@
 
 <script>
 import ArticlePreview from '@/components/ArticlePreview'
-import { mapState, mapMutations } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   async asyncData ({ $axios, store }) {
