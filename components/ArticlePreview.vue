@@ -1,22 +1,21 @@
 <template>
   <div class="article-preview">
     <div class="article-meta">
-      <nuxt-link to="/user/1/profile"><img src="http://i.imgur.com/Qr71crq.jpg" /></nuxt-link>
+      <nuxt-link :to="`/user/${article.author.username}/profile`"><img :src="article.author.image" /></nuxt-link>
       <div class="info">
-        <nuxt-link to="/user/1/profile" class="author">Eric Simons</nuxt-link>
-        <span class="date">January 20th</span>
+        <nuxt-link :to="`/user/${article.author.username}/profile`" class="author">{{ article.author.username }}</nuxt-link>
+        <span class="date">{{ article.createdAt }}</span>
       </div>
       <button class="btn btn-outline-primary btn-sm pull-xs-right">
-        <i class="ion-heart"></i> 29
+        <i class="ion-heart"></i> {{ article.favoritesCount }}
       </button>
     </div>
-    <nuxt-link to="/article/1" class="preview-link">
-      <h1>How to build webapps that scale</h1>
-      <p>This is the description for the post.</p>
+    <nuxt-link :to="`/article/${article.slug}`" class="preview-link">
+      <h1>{{ article.title }}</h1>
+      <p>{{ article.body }}</p>
       <span>Read more...</span>
-      <ul class="tag-list">
-        <li class="tag-default tag-pill tag-outline">Music</li>
-        <li class="tag-default tag-pill tag-outline">Song</li>
+      <ul class="tag-list" v-if="article.tagList.length">
+        <li class="tag-default tag-pill tag-outline" v-for="tag in article.tagList" :key="tag">{{ tag }}</li>
       </ul>
     </nuxt-link>
   </div>
@@ -24,6 +23,10 @@
 
 <script>
 export default {
-  name: 'article-preview'
+  name: 'article-preview',
+
+  props: {
+    article: Object
+  }
 }
 </script>
