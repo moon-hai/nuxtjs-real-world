@@ -21,10 +21,8 @@
             </ul>
           </div>
 
-          <ArticlePreview />
-          <ArticlePreview />
-          <ArticlePreview />
-          <ArticlePreview />
+
+          <ArticlePreview v-for="article in articles" :key="article.slug" :article="article" />
         </div>
 
         <div class="col-md-3">
@@ -49,8 +47,21 @@
 
 <script>
 import ArticlePreview from '@/components/ArticlePreview'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
+  asyncData ({ $axios, store }) {
+    return $axios.$get('/articles')
+      .then(res => {
+        store.dispatch('articles/getArticles', res.articles)
+       })
+      .catch(error => { throw error })
+  },
+
+  computed: {
+    ...mapState({ articles: state => state.articles.articles })
+  },
+
   components: {
     ArticlePreview
   }
