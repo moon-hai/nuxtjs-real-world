@@ -11,15 +11,15 @@
 
           <form>
             <fieldset class="form-group">
-              <input class="form-control form-control-lg" type="text" placeholder="Your Name">
+              <input class="form-control form-control-lg" type="text" v-model="params.username" placeholder="Your Name" required />
             </fieldset>
             <fieldset class="form-group">
-              <input class="form-control form-control-lg" type="text" placeholder="Email">
+              <input class="form-control form-control-lg" type="text" v-model="params.email" placeholder="Email" required />
             </fieldset>
             <fieldset class="form-group">
-              <input class="form-control form-control-lg" type="password" placeholder="Password">
+              <input class="form-control form-control-lg" type="password" v-model="params.password" placeholder="Password" required />
             </fieldset>
-            <button class="btn btn-lg btn-primary pull-xs-right">
+            <button class="btn btn-lg btn-primary pull-xs-right" @click.prevent="register()">
               Sign up
             </button>
           </form>
@@ -32,3 +32,48 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapActions } from 'vuex'
+
+export default {
+  data() {
+    return {
+      params: {
+        username: '',
+        email: '',
+        password: ''
+      }
+    }
+  },
+
+  methods: {
+    async register() {
+      try {
+        await this.$axios.post('/users', {
+          user: params
+        })
+
+        await this.$auth.loginWith('local', {
+          data: {
+            email: this.email,
+            password: this.password
+          },
+        })
+
+        this.$router.push('/')
+      } catch (e) {
+        throw e
+      }
+    },
+
+    // ...mapActions({
+    //   registerUser: 'user/registerUser'
+    // }),
+
+    // register() {
+    //   this.registerUser(this.params)
+    // }
+  }
+}
+</script>
