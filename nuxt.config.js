@@ -37,6 +37,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
     '@nuxtjs/axios'
   ],
 
@@ -44,6 +45,18 @@ export default {
   axios: {
     baseURL: 'https://conduit.productionready.io/api',
     proxyHeaders: false
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'data.token' },
+          user: { url: 'me', method: 'get', propertyName: 'data' },
+          logout: false
+        }
+      }
+    }
   },
   /*
   ** Build configuration
