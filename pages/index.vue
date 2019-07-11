@@ -21,7 +21,6 @@
             </ul>
           </div>
 
-
           <ArticlePreview v-for="article in articles" :key="article.slug" :article="article" />
         </div>
 
@@ -29,14 +28,7 @@
           <div class="sidebar">
             <p>Popular Tags</p>
             <div class="tag-list">
-              <span class="tag-pill tag-default">programming</span>
-              <span class="tag-pill tag-default">javascript</span>
-              <span class="tag-pill tag-default">emberjs</span>
-              <span class="tag-pill tag-default">angularjs</span>
-              <span class="tag-pill tag-default">react</span>
-              <span class="tag-pill tag-default">mean</span>
-              <span class="tag-pill tag-default">node</span>
-              <span class="tag-pill tag-default">rails</span>
+              <span class="tag-pill tag-default" v-for="tag in tags" :key="tag">{{ tag }}</span>
             </div>
           </div>
         </div>
@@ -50,16 +42,25 @@ import ArticlePreview from '@/components/ArticlePreview'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  asyncData ({ $axios, store }) {
-    return $axios.$get('/articles')
-      .then(res => {
-        store.dispatch('articles/getArticles', res.articles)
-       })
-      .catch(error => { throw error })
+  async asyncData ({ $axios, store }) {
+    return await Promise.all([
+      $axios.$get('/articles')
+        .then(res => {
+          store.dispatch('articles/getArticles', res.articles)
+        })
+        .catch(error => { throw error }),
+
+      $axios.$get('/tags')
+        .then(res => {
+          store.dispatch('tags/getTags', res.tags)
+        })
+        .catch(error => { throw error })
+    ])
   },
 
   computed: {
-    ...mapState({ articles: state => state.articles.articles })
+    ...mapState({ articles: state => state.articles.articles }),
+    ...mapState({ tags: state => state.tags.tags })
   },
 
   components: {
