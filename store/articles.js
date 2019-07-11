@@ -11,7 +11,7 @@ export const mutations = {
 }
 
 export const actions = {
-  getArticles({ commit }, data) {
-    commit(types.getArticles, data)
+  getArticles({ commit }, articles) {
+    commit(types.getArticles, articles)
   }
 }
