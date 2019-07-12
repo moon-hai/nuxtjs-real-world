@@ -5,11 +5,11 @@
         <div class="col-md-6 offset-md-3 col-xs-12">
           <h1 class="text-xs-center">Sign up</h1>
 
-          <ul class="error-messages">
-            <li>That email is already taken</li>
+          <ul class="error-messages" v-if="errors">
+            <li v-for="(error, index) in errors" :key="index">{{ index }} {{ error[0] }}</li>
           </ul>
 
-          <form>
+          <form @submit.prevent="register()">
             <fieldset class="form-group">
               <input class="form-control form-control-lg" type="text" v-model="params.username" placeholder="Your Name" required />
             </fieldset>
@@ -19,7 +19,7 @@
             <fieldset class="form-group">
               <input class="form-control form-control-lg" type="password" v-model="params.password" placeholder="Password" required />
             </fieldset>
-            <button class="btn btn-lg btn-primary pull-xs-right" @click.prevent="register()">
+            <button class="btn btn-lg btn-primary pull-xs-right">
               Sign up
             </button>
           </form>
@@ -43,37 +43,31 @@ export default {
         username: '',
         email: '',
         password: ''
-      }
+      },
+      errors: null
     }
   },
 
   methods: {
     async register() {
       try {
-        await this.$axios.post('/users', {
-          user: params
-        })
+        await this.$axios.post('/users', { user: this.params })
+          .then(async response => {
+            await this.$auth.loginWith('local', { user: {
+                email: this.email,
+                password: this.password
+              }})
+              .then(res => {
+                // this.$router.push('/')
+              })
+              .catch(error => { console.log(error.response.data.errors) })
+          })
+          .catch(error => {
+            this.errors = error.response.data.errors
+          })
 
-        await this.$auth.loginWith('local', {
-          data: {
-            email: this.email,
-            password: this.password
-          },
-        })
-
-        this.$router.push('/')
-      } catch (e) {
-        throw e
-      }
-    },
-
-    // ...mapActions({
-    //   registerUser: 'user/registerUser'
-    // }),
-
-    // register() {
-    //   this.registerUser(this.params)
-    // }
+      } catch (e) { throw e }
+    }
   }
 }
 </script>

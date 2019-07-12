@@ -38,7 +38,7 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/axios'
+    '@nuxtjs/auth'
   ],
 
   // axios
@@ -51,10 +51,12 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: 'login', method: 'post', propertyName: 'data.token' },
-          user: { url: 'me', method: 'get', propertyName: 'data' },
-          logout: false
-        }
+          login: { url: '/users/login', method: 'post', propertyName: 'user' },
+          user: { url: '/user', method: 'get', propertyName: 'user' },
+          // logout: false
+        },
+        tokenRequired: false,
+        tokenType: false
       }
     }
   },

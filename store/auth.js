@@ -1,5 +1,3 @@
-import Vuex from 'vuex'
-
 export const getters = {
   isAuthenticated(state) {
     return state.auth.loggedIn
@@ -9,7 +7,3 @@ export const getters = {
     return state.auth.user
   }
 }
-
-new Vuex.Store({
-
-})
