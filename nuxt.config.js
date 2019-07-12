@@ -51,12 +51,10 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/users/login', method: 'post', propertyName: 'user' },
+          login: { url: '/users/login', method: 'post', propertyName: 'user.token' },
           user: { url: '/user', method: 'get', propertyName: 'user' },
-          // logout: false
-        },
-        tokenRequired: false,
-        tokenType: false
+          logout: { url: '/users/logout', method: 'post' },
+        }
       }
     }
   },

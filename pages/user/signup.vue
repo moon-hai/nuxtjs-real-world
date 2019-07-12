@@ -37,6 +37,8 @@
 import { mapActions } from 'vuex'
 
 export default {
+  // middleware: 'guest',
+
   data() {
     return {
       params: {
@@ -53,19 +55,22 @@ export default {
       try {
         await this.$axios.post('/users', { user: this.params })
           .then(async response => {
-            await this.$auth.loginWith('local', { user: {
-                email: this.email,
-                password: this.password
-              }})
-              .then(res => {
-                // this.$router.push('/')
-              })
-              .catch(error => { console.log(error.response.data.errors) })
+            await this.$auth.loginWith('local', {
+              data: {
+                user: {
+                  email: this.params.email,
+                  password: this.params.password
+                }
+              }
+            })
+            .then(res => {
+              return res
+            })
+            .catch(error => { this.errors = error.response.data.errors })
           })
           .catch(error => {
             this.errors = error.response.data.errors
           })
-
       } catch (e) { throw e }
     }
   }
