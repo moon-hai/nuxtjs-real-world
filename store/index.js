@@ -1,5 +1,9 @@
-import Vuex from 'vuex'
+export const getters = {
+  isAuthenticated(state) {
+    return state.auth.loggedIn
+  },
 
-new Vuex.Store({
-  
-})
+  loggedInUser(state) {
+    return state.auth.user
+  }
+}
